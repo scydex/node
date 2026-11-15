@@ -15,8 +15,10 @@ on:
       - .github/**
       - '!.github/workflows/test-linux.yml'
     types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
   push:
     branches:
+      - durative-ci
       - main
       - canary
       - v[0-9]+.x-staging
@@ -58,7 +60,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, ubuntu-24.04-arm]
+        os: [durative]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
